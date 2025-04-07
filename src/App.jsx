@@ -31,14 +31,12 @@ const productData = [
   },
 ]
 
-function App() {
+function CartProvider({children}) {
   const [products, setProducts] = useState(productData)
 
   const addToCartHandler = (selectedProductName) => {
-    console.log('...sel name/....', selectedProductName)
     const updatedProducts = products.map(product => {
       if(product.name === selectedProductName){
-        console.log('...is same.....', product.name, selectedProductName)
         return {...product, isCart: true}
       }
       else {
@@ -50,8 +48,13 @@ function App() {
 
   return (
     <ProductContext.Provider value={{products, addToCartHandler}}>
-      
-      <div style={{width: '100vw'}}>
+      {children}
+    </ProductContext.Provider>)
+}
+
+function App() {
+  return (
+    <CartProvider>  
         <Router>
           <Nav />          
           <Routes>
@@ -59,8 +62,7 @@ function App() {
             <Route path='/cart' element={<Cart />} />
           </Routes>
         </Router>
-      </div>
-    </ProductContext.Provider>
+    </CartProvider>
   )
 }
 
