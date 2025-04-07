@@ -1,0 +1,23 @@
+import { useContext } from "react"
+import CartContext from "../context/CartContext"
+
+function ProductListing() {
+    const {products, addToCartHandler} = useContext(CartContext)
+    console.log(products)
+    return (
+        <div className='container my-5'>
+            <h2>Products</h2>
+            <ul className='list-group'>
+                {(products.filter(product => !product.isCart))
+                    .map(product => (
+                    <li className='list-group-item'>
+                        <h5>{product.name}</h5>
+                        <p>Price: {product.price}</p>
+                        <button className='btn btn-info' onClick={() => addToCartHandler(product.name)}>Add To Cart</button>
+                    </li>)) }
+            </ul>
+        </div>
+    )
+}
+
+export default ProductListing
