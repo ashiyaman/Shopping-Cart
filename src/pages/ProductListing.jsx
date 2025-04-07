@@ -3,11 +3,10 @@ import CartContext from "../context/CartContext"
 
 function ProductListing() {
     const {products, addToCartHandler} = useContext(CartContext)
-    console.log(products)
     return (
         <div className='container my-5'>
             <h2>Products</h2>
-            <ul className='list-group'>
+            <ul className='list-group my-3'>
                 {(products.filter(product => !product.isCart))
                     .map(product => (
                     <li key={product.name} className='list-group-item'>

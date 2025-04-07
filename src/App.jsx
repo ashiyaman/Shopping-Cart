@@ -45,7 +45,6 @@ function App() {
         return product
       }
     })
-    console.log('...in upd....', updatedProducts)
     setProducts(updatedProducts)
   }
 
