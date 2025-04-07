@@ -10,7 +10,7 @@ function ProductListing() {
             <ul className='list-group'>
                 {(products.filter(product => !product.isCart))
                     .map(product => (
-                    <li className='list-group-item'>
+                    <li key={product.name} className='list-group-item'>
                         <h5>{product.name}</h5>
                         <p>Price: {product.price}</p>
                         <button className='btn btn-info' onClick={() => addToCartHandler(product.name)}>Add To Cart</button>
